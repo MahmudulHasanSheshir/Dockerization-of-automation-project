@@ -1,0 +1,36 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:latest
+    container_name: sheshir-mysql
+    #restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "12345678"
+      MYSQL_DATABASE: "detsdb"
+      
+    volumes:
+      - ./db:/var/lib/mysql
+    networks:
+      - my-network
+
+  sheshir-htt:
+    container_name: sheshir-httpd
+    build:
+      context: /home/sheshir123/docker/httpd
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "30:80"
+    depends_on:
+      - mysql
+    volumes:
+      - ./httpd:/var/www/html
+    networks:
+      - my-network
+
+networks:
+  my-network:
+
+volumes:
+  db:
+  httpd:
