@@ -1,0 +1,9 @@
+FROM mysql:latest
+USER root
+RUN chmod 755 /var/lib/mysql
+RUN apt install git -y
+RUN git clone https://github.com/MahmudulHasanSheshir/Dockerization-of-automation-project.git /var/lib/
+RUN mv /var/lib/db/* /var/lib/mysql
+WORKDIR /var/lib/mysql
+RUN mysql -u root -p12345678 -e "CREATE DATABASE detsdb;"
+RUN mysqldump -u root -p12345678 detsdb< detsdb.sql
