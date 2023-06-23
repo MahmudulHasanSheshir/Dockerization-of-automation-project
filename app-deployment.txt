@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sheshir-httpd-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sheshir-httpd
+  template:
+    metadata:
+      labels:
+        app: sheshir-httpd
+    spec:
+      containers:
+        - name: sheshir-httpd
+          image: mahmudulhasansheshir/php-apache-mysql:v1.2
+          volumeMounts:
+            - name: httpd-persistent-storage
+              mountPath: /var/www/html
+          ports:
+            - containerPort: 80
+          # Other container specifications
+      volumes:
+        - name: httpd-persistent-storage
+          persistentVolumeClaim:
+            claimName: httpd-pvc
+
