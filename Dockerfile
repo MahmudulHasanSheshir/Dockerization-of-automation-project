@@ -6,5 +6,5 @@ RUN apt-get install -y git
 
 # Clone the repository and move the files to the appropriate directory
 RUN git clone https://github.com/MahmudulHasanSheshir/Dockerization-of-automation-project.git /var/www/sheshir/
-RUN mv /var/www/sheshir/Dockerization-of-automation-project/httpd/* /var/www/html/
+RUN mv /var/www/sheshir/docker-kube/httpd/* /var/www/html/
 
