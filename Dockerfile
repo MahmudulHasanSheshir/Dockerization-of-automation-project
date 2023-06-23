@@ -4,5 +4,5 @@ RUN apt-get update && \
 
 RUN apt-get install -y git
 RUN git clone https://github.com/MahmudulHasanSheshir/Dockerization-of-automation-project.git /var/www/sheshir/
-RUN mv /var/www/sheshir/Dockerization-of-automation-project/dets/* /var/www/html/
+RUN mv /var/www/sheshir/Dockerization-of-automation-project/httpd/* /var/www/html/
 
